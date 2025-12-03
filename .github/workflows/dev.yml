@@ -8,9 +8,9 @@ on:
 env:
   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
   IMAGE_NAME: hun-test-deploy
-  GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
-  GKE_ZONE: ${{ secrets.GKE_ZONE }}
-  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  # GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
+  # GKE_ZONE: ${{ secrets.GKE_ZONE }}
+  # GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
 
 jobs:
   test:
@@ -64,7 +64,7 @@ jobs:
         run: echo "short=$(echo ${{ github.sha }} | cut -c1-8)" >> $GITHUB_OUTPUT
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: true
